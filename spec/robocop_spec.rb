@@ -19,21 +19,21 @@ RSpec.describe Robocop do
 				return robot
 			}
 
-			it 'should move forward' do 
+			it 'should move forward' do
 				expect(robot.forward).to eq([100, 121])
 			end
 		end
 
 		context 'starting at another position and direction' do
-			let(:robot) { 
+			let(:robot) {
 				robot = Robocop.new
 				robot.direction = :east
 				return robot
 			}
-			
+
 			it 'should move forwards' do
 				expect(robot.forward).to eq([1,0])
-			end	
+			end
 		end
 	end
 end

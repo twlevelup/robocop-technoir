@@ -9,18 +9,22 @@ class Robocop
 		@direction = :north
 	end
 
-    def beep
-        'beep boop'
-    end
+	def beep
+		'beep boop'
+	end
 
-    def forward
-    if @direction = north 
-    	@y = @y + 1
-    	[@x,@y]
+	def forward
+		if @direction == :north
+			@y = @y + 1
+			[@x,@y]
 
-    else @direction = east
-    	@x = @x + 1
-    	[@x,@y]
-    	
-    end
+		else @direction == :east
+			@x = @x + 1
+			[@x,@y]
+
+		end
+	end
+
 end
+robo = Robocop.new
+robo.forward
