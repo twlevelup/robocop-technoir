@@ -13,6 +13,10 @@ class Robocop
 		'beep boop'
 	end
 
+	def location
+		return [@x,@y]
+	end
+
 	def forward
 		if @direction == :north
 			@y = @y + 1
@@ -26,5 +30,3 @@ class Robocop
 	end
 
 end
-robo = Robocop.new
-robo.forward
