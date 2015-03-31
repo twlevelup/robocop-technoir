@@ -21,8 +21,20 @@ while true
     case userInput[0]
     when 'u'
         robo.forward
+        puts "I just moved on block up"
+    when 'd'
+        robo.forward
+        puts "I just moved on block down"
+    when 'r'
+        robo.forward
+        puts "I just rotated to my right"
+    when 'l'
+        robo.forward
+        puts "I just rotated to my left"
+    else
+        puts "I do not understand that command"
     end
 
-    puts "Current lcoation is: [#{robo.x}, #{robo.y}]"
+    # puts "Current lcoation is: [#{robo.x}, #{robo.y}]"
     puts "\nWhats my next command?: "
 end
