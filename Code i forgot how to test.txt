@@ -1,0 +1,71 @@
+		
+TESTS
+
+
+		context 'starting at another position and direction' do
+			let(:robot) { 
+				robot = Robocop.new
+				robot.direction = :west
+				return robot
+			}
+			
+			it 'should move forwards' do
+				expect(robot.forward).to eq([0,1])
+			end	
+		end
+
+
+		
+		context 'starting at another position and direction' do
+			let(:robot) { 
+				robot = Robocop.new
+				robot.direction = :south
+				return robot
+			}
+			
+			it 'should move forwards' do
+				expect(robot.forward).to eq([-1,0])
+			end	
+		end
+
+
+		context 'starting at another position and direction' do
+			let(:robot) { 
+				robot = Robocop.new
+				robot.direction = :north
+				return robot
+			}
+			
+			it 'should move forwards' do
+				expect(robot.forward).to eq([1,0])
+			end	
+		end
+
+
+
+Function
+
+		def forward
+    		if @direction = north 
+    			@y = @y + 1
+    			[@x,@y]
+
+    		elsif @direction = east
+    			@x = @x + 1
+    			[@x,@y]
+    		
+		elsif @direction = west
+    			@x = @x - 1
+    			[@x,@y]
+
+		elsif @direction = south
+    			@y = @y - 1
+    			[@x,@y]
+  		 end
+
+		
+
+
+		def arrest
+		if grid.coordinate.criminal = true
+			
