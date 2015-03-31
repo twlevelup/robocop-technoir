@@ -25,6 +25,22 @@ class Robocop
 		end
 	end
 
+	def backward
+		if @direction == :north
+			@y = @y - 1
+			[@x,@y]
+		end
+	end
+
+	def rotateLeft
+		if @direction == :north
+			@direction = :west
+		end
+	end
+
+	def rotateRight
+		if @direction == :north
+			@direction = :east
+		end
+	end
 end
-robo = Robocop.new
-robo.forward
