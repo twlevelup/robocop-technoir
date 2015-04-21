@@ -2,11 +2,16 @@ class Robocop
 	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :direction
+	attr_accessor :boundry
 
 	def initialize
 		@x = 0
 		@y = 0
 		@direction = :north
+
+		@boundry = {}
+		@boundry['y'] = 5
+		@boundry['x'] = 5
 	end
 
 	def beep
@@ -18,18 +23,22 @@ class Robocop
 	end
 
 	def forward
-		if @direction == :north
+		case @direction
+		when :north
 			@y = @y + 1
-			[@x,@y]
-
-		else @direction == :east
+		when :east
 			@x = @x + 1
-			[@x,@y]
-
+		when :south
+			@y = @y - 1
+		when :west
+			@x = @x - 1
 		end
+
+		[@x,@y]
 	end
 
 	def backward
+
 		if @direction == :north
 			@y = @y - 1
 			[@x,@y]
@@ -45,6 +54,14 @@ class Robocop
 	def rotateRight
 		if @direction == :north
 			@direction = :east
+		end
+	end
+
+	def inBoundry?
+		if((@x <= @boundry['x'] && @x >= 0) && (@y <= @boundry['y'] && @y >= 0))
+			return true
+		else
+			return false
 		end
 	end
 end

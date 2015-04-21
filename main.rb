@@ -15,7 +15,7 @@ puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
 puts "Please ender the commend you would me to carry out: "
-
+print "=#{robo.inBoundry?}"
 while true
     userInput = gets.strip
     case userInput[0]

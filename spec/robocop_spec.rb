@@ -66,4 +66,97 @@ RSpec.describe Robocop do
 			end
 		end
 	end
+
+	describe '#boundry' do
+
+		# Moving north
+	    context 'Robot moves forwards within the boundry' do
+	        robot = Robocop.new
+			robot.forward
+	        it 'robot should be within boundary' do
+	            expect(robot.inBoundry?).to eq(true)
+	        end
+	    end
+
+		context 'Robot moves forwards on the boundry' do
+			robot = Robocop.new
+			robot.y = 4
+			robot.forward
+			it 'Robot moves forwards on the boundry' do
+				expect(robot.inBoundry?).to eq(true)
+			end
+		end
+
+		context 'Robot moves forwards out of boundry' do
+			robot = Robocop.new
+			robot.y = 5
+			robot.forward
+			it 'Robot moves forwards out of boundry' do
+				expect(robot.inBoundry?).to eq(false)
+			end
+		end
+
+		# Moving south
+		context 'Robot moves forwards within the boundry' do
+	        robot = Robocop.new
+			robot.direction = :south
+			robot.y = 5
+			robot.forward
+	        it 'robot should be within boundary' do
+	            expect(robot.inBoundry?).to eq(true)
+	        end
+	    end
+
+	    context 'Robot moves forwards on the boundry' do
+	        robot = Robocop.new
+			robot.direction = :south
+			robot.y = 1
+			robot.forward
+	        it 'robot should be on boundary' do
+	            expect(robot.inBoundry?).to eq(true)
+	        end
+	    end
+
+		context 'Robot moves forwards on the boundry' do
+	        robot = Robocop.new
+			robot.direction = :south
+			robot.y = 0
+			robot.forward
+	        it 'robot should be on boundary' do
+	            expect(robot.inBoundry?).to eq(false)
+	        end
+	    end
+
+		# Moving east
+		context 'Robot is moving east' do
+	        robot = Robocop.new
+			robot.direction = :east
+			robot.x = 0
+			robot.forward
+	        it 'robot should be within boundary' do
+	            expect(robot.inBoundry?).to eq(true)
+	        end
+
+	    end
+
+		context 'Robot is moving east' do
+			robot = Robocop.new
+			robot.direction = :east
+			robot.x = 4
+			robot.forward
+			it 'robot should be on boundary' do
+	            expect(robot.inBoundry?).to eq(true)
+	        end
+		end
+
+		context 'Robot is moving east' do
+			robot = Robocop.new
+			robot.direction = :east
+			robot.x = 5
+			robot.forward
+			it 'robot should be out of boundary' do
+				expect(robot.inBoundry?).to eq(false)
+			end
+		end
+	end
 end
