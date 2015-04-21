@@ -19,7 +19,7 @@ class Robocop
 	end
 
 	def location
-		return [@x,@y]
+		return {x: @x, y: @y}
 	end
 
 	def direction
@@ -85,6 +85,29 @@ class Robocop
 		end
 
 		@direction
+	end
+
+	def moveTo(x, y)
+		x_diff = (@x - x).abs
+
+		y_diff = (@y - y).abs
+
+		self.direction = :north
+		path = []
+		y_diff.times {
+			self.forward
+			path.push(self.location)
+		}
+
+		self.rotateRight
+		
+		x_diff.times {	
+			self.forward
+
+			path.push(location)
+		}
+
+		path
 	end
 
 	def inBoundry?

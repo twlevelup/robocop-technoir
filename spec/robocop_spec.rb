@@ -168,7 +168,7 @@ RSpec.describe Robocop do
 			robot.x = 3
 			robot.backward
 			it 'robot should move backwards' do
-				expect(robot.location).to eq([3, 3])
+				expect(robot.location).to eq({x: 3, y: 3})
 			end
 		end
 
@@ -179,7 +179,7 @@ RSpec.describe Robocop do
 			robot.x = 3
 			robot.backward
 			it 'robot should move backwards' do
-				expect(robot.location).to eq([2, 4])
+				expect(robot.location).to eq({x: 2, y: 4})
 			end
 		end
 	end
@@ -224,5 +224,20 @@ RSpec.describe Robocop do
 			end
 		end
 
+	end
+
+	describe '#rotating' do
+		context 'Robot moves to prescribed coordinates' do
+			robot = Robocop.new
+			robot.direction = :north
+			robot.y = 0
+			robot.x = 0
+			path = robot.moveTo(2, 2)
+
+			expectedPath = [{x: 0, y:1}, {x: 0,y: 2}, {x: 1,y: 2}, {x: 2,y: 2}]
+			it 'robot should follow a path' do
+				expect(path).to eq(expectedPath)
+			end
+		end
 	end
 end
