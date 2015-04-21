@@ -15,18 +15,22 @@ puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
 puts "Please ender the commend you would me to carry out: "
-print "=#{robo.inBoundry?}"
+
 while true
     userInput = gets.strip
-    case userInput[0]
+
+    case userInput
     when 'move forward'
         robo.forward
         puts "I just moved one block forwards"
     when 'move backward'
+        robo.backword
         puts "I just moved one block backwards"
     when 'turn right'
+        robo.rotateRight
         puts "I just rotated to my right"
     when 'turn left'
+        robo.rotateLeft
         puts "I just rotated to my left"
     else
         puts "I do not understand that command"

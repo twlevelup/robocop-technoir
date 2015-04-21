@@ -22,6 +22,10 @@ class Robocop
 		return [@x,@y]
 	end
 
+	def direction
+		return @direction
+	end
+
 	def forward
 		case @direction
 		when :north
@@ -38,23 +42,49 @@ class Robocop
 	end
 
 	def backward
-
-		if @direction == :north
+		case @direction
+		when :north
 			@y = @y - 1
-			[@x,@y]
+		when :east
+			@x = @x - 1
+		when :south
+			@y = @y + 1
+		when :west
+			@x = @x + 1
 		end
+
+		[@x,@y]
 	end
 
 	def rotateLeft
-		if @direction == :north
+
+		case @direction
+		when :north
 			@direction = :west
+		when :south
+			@direction = :east
+		when :east
+			@direction = :north			
+		when :west
+			@direction = :south
 		end
+
+		@direction
 	end
 
 	def rotateRight
-		if @direction == :north
+		case @direction
+		when :north
 			@direction = :east
+		when :south
+			@direction = :west
+		when :east
+			@direction = :south			
+		when :west
+			@direction = :north
 		end
+
+		@direction
 	end
 
 	def inBoundry?

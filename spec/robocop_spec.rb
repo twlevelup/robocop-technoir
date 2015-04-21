@@ -158,5 +158,71 @@ RSpec.describe Robocop do
 				expect(robot.inBoundry?).to eq(false)
 			end
 		end
+
+
+		# Move backwards
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :north
+			robot.y = 4
+			robot.x = 3
+			robot.backward
+			it 'robot should move backwards' do
+				expect(robot.location).to eq([3, 3])
+			end
+		end
+
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :east
+			robot.y = 4
+			robot.x = 3
+			robot.backward
+			it 'robot should move backwards' do
+				expect(robot.location).to eq([2, 4])
+			end
+		end
+	end
+
+	describe '#rotating' do
+
+		# Turn left
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :north
+			robot.rotateLeft
+			it 'robot should face west' do
+				expect(robot.direction).to eq(:west)
+			end
+		end
+
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :south
+			robot.rotateLeft
+			it 'robot should face east' do
+				expect(robot.direction).to eq(:east)
+			end
+		end
+
+		# Turn right
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :north
+			robot.rotateRight
+			it 'robot should face west' do
+				expect(robot.direction).to eq(:east)
+			end
+		end
+
+		context 'Robot moves backwards' do
+			robot = Robocop.new
+			robot.direction = :south
+			robot.rotateRight
+			it 'robot should face east' do
+				expect(robot.direction).to eq(:west)
+			end
+		end
+
 	end
 end
