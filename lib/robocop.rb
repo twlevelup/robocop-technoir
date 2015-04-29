@@ -4,9 +4,9 @@ class Robocop
 	attr_accessor :direction
 	attr_accessor :boundry
 
-	def initialize
-		@x = 0
-		@y = 0
+	def initialize(x = 0, y = 0)
+		@x = x
+		@y = y
 		@direction = :north
 
 		@boundry = {}

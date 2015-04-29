@@ -12,17 +12,19 @@ class Grid
 		@vStreetNames["4"] = "Elizabeth St"
 		@vStreetNames["5"] = "Swanston St"
 		@vStreetNames["6"] = "Russell St"
-		@vStreetNames["7"] = "Spring St"
+		@vStreetNames["7"] = "Exhibition St"
+		@vStreetNames["8"] = "Spring St"
 
 		@hStreetNames = {}
 		@hStreetNames["0"] = "Flinders St"
-		@hStreetNames["1"] = "Little Flinders St"
+		@hStreetNames["1"] = "Flinders Ln"
 		@hStreetNames["2"] = "Collins St"
 		@hStreetNames["3"] = "Lt Collins St"
-		@hStreetNames["4"] = "Burke St"
-		@hStreetNames["5"] = "Lt Burke St"
+		@hStreetNames["4"] = "Bourke St"
+		@hStreetNames["5"] = "Lt Bourke St"
 		@hStreetNames["6"] = "Lonsdale St"
-		@hStreetNames["7"] = "Latrobe St"
+		@hStreetNames["7"] = "Lt Lonsdale St"
+		@hStreetNames["8"] = "Latrobe St"
 
 	end
 

@@ -4,26 +4,27 @@ require './lib/grid.rb'
 # This will clear the screen, so that it's easier to use
 system("clear")
 
-robo = Robocop.new
-grid = Grid.new(7, 7)
+robo = Robocop.new(5, 0)
+
+grid = Grid.new(8, 8)
 
 puts "\n\n\n"
-puts "Hi, I'm a moving robot, but here is what we can do..."
+puts "Hi, I'm a moving robot, here is what we can do..."
 puts "You can move me in 4 directions, they are as follows:"
 
 puts "\n\n"
 puts "\t\t******Navigation******"
-puts "\t\tmove forward: will move me forwards*"
-puts "\t\tmove backward: will move me backwards*"
-puts "\t\tturn right: will rotate me right*"
-puts "\t\tturn left: will rotate me left*"
+puts "\t\tf: will move me forwards*"
+puts "\t\tb: will move me backwards*"
+puts "\t\tr: will rotate me right*"
+puts "\t\tl: will rotate me left*"
 puts "\n\n"
 puts "\t\tgo to [x, y]: will move me from my current location to a new location*"
 puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
-puts "I am currently at #{robo.location}"
-puts "Please ender the commend you would me to carry out: "
+puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+puts "Please enter the command you would like me to carry out: "
 
 
 
@@ -32,22 +33,22 @@ while true
     userInput = gets.strip
 
     case userInput
-    when 'move forward'
+    when 'f'
         robo.forward
         puts "I just moved one block forwards"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
         puts "I am currently facing #{robo.direction}"
-    when 'move backward'
-        robo.backword
+    when 'b'
+        robo.backward
         puts "I just moved one block backwards"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
         puts "I am currently facing #{robo.direction}"
-    when 'turn right'
+    when 'r'
         robo.rotateRight
         puts "I just rotated to my right"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
         puts "I am currently facing #{robo.direction}"
-    when 'turn left'
+    when 'l'
         robo.rotateLeft
         puts "I just rotated to my left"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
