@@ -58,6 +58,7 @@ while true
         puts "This is the path I took: \n"
         path.count.times { |i|
             puts path[i]
+            sleep(0.5)
         }
     else
         puts "I do not understand that command"
