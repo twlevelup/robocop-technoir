@@ -1,12 +1,14 @@
 require './lib/robocop.rb'
+require './lib/grid.rb'
 
 # This will clear the screen, so that it's easier to use
 system("clear")
 
 robo = Robocop.new
+grid = Grid.new(7, 7)
 
 puts "\n\n\n"
-puts "Hi, I'm a moving robot, I still don't have a name, but here is what we can do..."
+puts "Hi, I'm a moving robot, but here is what we can do..."
 puts "You can move me in 4 directions, they are as follows:"
 
 puts "\n\n"
@@ -20,6 +22,7 @@ puts "\t\tgo to [x, y]: will move me from my current location to a new location*
 puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
+puts "I am currently at #{robo.location}"
 puts "Please ender the commend you would me to carry out: "
 
 
@@ -32,19 +35,23 @@ while true
     when 'move forward'
         robo.forward
         puts "I just moved one block forwards"
-        puts "I am currently at #{robo.location}"
+        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+        puts "I am currently facing #{robo.direction}"
     when 'move backward'
         robo.backword
         puts "I just moved one block backwards"
-        puts "I am currently at #{robo.location}"
+        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+        puts "I am currently facing #{robo.direction}"
     when 'turn right'
         robo.rotateRight
         puts "I just rotated to my right"
-        puts "I am currently at #{robo.location}"
+        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+        puts "I am currently facing #{robo.direction}"
     when 'turn left'
         robo.rotateLeft
         puts "I just rotated to my left"
-        puts "I am currently at #{robo.location}"
+        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+        puts "I am currently facing #{robo.direction}"
 
     when /go to \[[1-9]+\s*,\s*[1-9]+\]/
         robo.rotateLeft
