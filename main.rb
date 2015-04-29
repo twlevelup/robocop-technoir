@@ -6,7 +6,7 @@ system("clear")
 robo = Robocop.new
 
 puts "\n\n\n"
-puts "Hi, I'm a moving robot, I still don't have a name, but here is what we can do..."
+puts "Hi, I'm a moving robot, but here is what we can do..."
 puts "You can move me in 4 directions, they are as follows:"
 
 puts "\n\n"
@@ -20,6 +20,7 @@ puts "\t\tgo to [x, y]: will move me from my current location to a new location*
 puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
+puts "I am currently at #{robo.location}"
 puts "Please ender the commend you would me to carry out: "
 
 
@@ -33,6 +34,7 @@ while true
         robo.forward
         puts "I just moved one block forwards"
         puts "I am currently at #{robo.location}"
+        puts "I am currently facing #{robo.direction}"
     when 'move backward'
         robo.backword
         puts "I just moved one block backwards"
