@@ -67,16 +67,31 @@ def drawGrid
 		rowDash = "-" * 8 + "|"
 		tabDash = " " * 8 + "|"
 
-		5.times {
-			5.times { print rowDash }
+		0.upto(5) do |loop_y|
+			#puts loop_y
+
+			0.upto(5) do |loop_x|
+				#puts loop_x
+				if loop_x == 2 && loop_y == 0
+					print "-" * 3 + "x" + "-" * 4 + "|"
+				else
+					print rowDash
+				end
+			end
 
 			print "\n"
+		end
+			
 
-			5.times { print tabDash }
+		
 
-			print "\n"
+			
 
-		}
+			#5.times { print tabDash }
+
+			#print "\n"
+
+		
 
 		#str = "0" * 999999
 
