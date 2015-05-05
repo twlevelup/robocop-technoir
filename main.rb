@@ -4,7 +4,12 @@ require './lib/grid.rb'
 # This will clear the screen, so that it's easier to use
 system("clear")
 
-robots = [Robocop.new(5, 0), Robocop.new(4, 2)]
+robots = []
+
+(2..6).to_a.sample.times {
+    robots.push(Robocop.new((0..8).to_a.sample, (0..8).to_a.sample))
+    
+}
 
 grid = Grid.new
 
@@ -82,10 +87,11 @@ while true
         end
     when 'list'
         puts "\n"
-        puts "id\t\tlocation\t\t\tdirection"
+        printf "%-10s %-40s %s\n", "id", "location", "direction"
+        puts "-"*61
         count = 0
         robots.each { |r|
-            puts "#{count + 1}\t\t#{grid.getStreet(r.x, r.y)}\t#{r.direction}"
+            printf "%-10s %-42s %s\n", "#{count + 1}", "#{grid.getStreet(r.x, r.y)}", "#{r.direction}"
             count += 1
         }
 
