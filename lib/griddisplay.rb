@@ -1,20 +1,16 @@
-# require 'io/console'
+#  require 'io/console'
 
-# class DisplayGrid
-# 	attr_accessor :x
-# 	attr_accessor :y
-# 	attr_accessor :streetNames
+#  class DisplayGrid
+#  	attr_accessor :x
+#  	attr_accessor :y
 
-# 	@matrix = [[00],
-# 			   [01]]
-
-# 	def initialize
-# 		@grid = {}
-# 		@grid['y'] = 5
-# 		@grid['x'] = 5
+#  	def initialize
+#  		@grid = {}
+#  		@grid['y'] = 5
+#  		@grid['x'] = 5
 # 	end
 
-# 	def drawGrid
+# # 	def drawGrid
 # 		@grid['x'].times
 # 			puts "--"
 # 			puts "|"
@@ -55,47 +51,118 @@
 # 	# end
 # end
 
+
+# def drawGrid
+# 	puts "Draw Grid"
+
+# 	rowDash = "-" * 8 + "|"
+
+# 	0.upto(5) do |loop_y|
+
+# 		0.upto(5) do |loop_x|
+
+# 			if loop_x == 2 && loop_y == 1
+# 				print "-" * 8 + "x"
+# 			else
+# 				print rowDash
+# 			end
+# 		end
+# 		print "\n"
+# 	end
+# end
+
 def drawGrid
-		puts "Draw Grid"
+	puts "Draw Grid"
 
-		# @grid['x'].times
-		# 	puts "--"
-		# 	puts "|"
+	grid = Array.new(25) {Array.new(25,'--')}
 
-		# puts "\n"
+	grid.each_with_index { |row, rowIndex|
+		grid[rowIndex].each_with_index  { |cell, cellIndex|
+			if cellIndex % 2 == 0
+				grid[rowIndex][cellIndex] = '++'	
+	 		end
 
-		rowDash = "-" * 8 + "|"
-		tabDash = " " * 8 + "|"
-
-		0.upto(5) do |loop_y|
-			#puts loop_y
-
-			0.upto(5) do |loop_x|
-				#puts loop_x
-				if loop_x == 2 && loop_y == 0
-					print "-" * 3 + "x" + "-" * 4 + "|"
+	 		if rowIndex % 2 != 0
+	 			if(cellIndex % 2 == 0)
+					grid[rowIndex][cellIndex] = '||'
 				else
-					print rowDash
+					grid[rowIndex][cellIndex] = '  '
 				end
-			end
+	 		end
+		}
+	}
 
-			print "\n"
+	grid[3][2] = 'xx'
+
+	for row in grid
+		for cell in row
+			print cell.to_s
 		end
-			
-
-		
-
-			
-
-			#5.times { print tabDash }
-
-			#print "\n"
-
-		
-
-		#str = "0" * 999999
-
-		#puts str
+		print "\n"
 	end
+
+	# rowIndex = 0
+
+	# for row in grid
+
+	# 	cellIndex = 0
+
+	# 	# if(cellIndex % 2 == 0)
+	# 	# 	grid[rowIndex][cellIndex] = '|'
+	# 	# end
+
+	# 	for cell in row
+	# 		#print row.rindex(cell)
+	# 		if cellIndex % 2 != 0
+	# 			grid[rowIndex][cellIndex] = '+'	
+	# 		end
+
+	# 		if(cellIndex % 2 == 0)
+	# 	# 	grid[rowIndex][cellIndex] = '|'
+	# 	# end
+
+	# 	cellIndex = cellIndex + 1
+	# 	end
+	# 	rowIndex = rowIndex + 1
+	# end
+
+	# for row in grid
+	# 	for cell in row
+	# 		print cell.to_s
+	# 	end
+	# 	print "\n"
+	#end
+
+	# rowDash = "-" * 8 + "|"
+	# tabDash = " " * 8 + "|"
+
+	# robotx = 0
+	# roboty = 0
+
+	# 0.upto(5) do |loop_y|
+
+	# 	0.upto(5) do |loop_x|
+
+	# 		if robotx == 0 && roboty == loop_y && loop_x == 0
+	# 			print "x"
+	# 		end
+
+	# 		print "|"
+
+	# 		if  loop_x == robotx && loop_y == roboty && loop_x != 0
+	# 			print "-" * 8 + "x"
+	# 		else
+	# 			print rowDash
+	# 		end
+	# 	end
+	# 	print "\n"
+
+	# 	if loop_y != 5
+	# 		print "|"
+	# 		6.times {print tabDash}
+	# 		print "\n"
+	# 	end
+	# end
+end
 
 drawGrid
