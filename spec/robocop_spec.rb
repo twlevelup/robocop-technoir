@@ -42,7 +42,7 @@ RSpec.describe Robocop do
 			let(:robot) { Robocop.new }
 
 			it 'should move backward' do
-				expect(robot.backward).to eq([0,-1])
+				expect(robot.backward).to eq([0,0])
 			end
 		end
 	end

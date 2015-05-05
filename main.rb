@@ -39,7 +39,6 @@ while true
         puts "I am currently facing #{robo.direction}"
     when 'b'
         robo.backward
-        puts "I just moved one block backwards"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
         puts "I am currently facing #{robo.direction}"
     when 'r'

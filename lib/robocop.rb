@@ -32,7 +32,7 @@ class Robocop
 		allowed = false
 		case @direction
 		when :north
-			allowed = isInboundary?(@x, @y + 1)
+			allowed = isInBoundary?(@x, @y + 1)
 
 			if allowed
 				@y = @y + 1
@@ -42,7 +42,7 @@ class Robocop
 			end
 			
 		when :east
-			allowed = isInboundary?(@x + 1, @y)
+			allowed = isInBoundary?(@x + 1, @y)
 
 			if allowed
 				@x = @x + 1
@@ -52,7 +52,7 @@ class Robocop
 			end
 			
 		when :south
-			allowed = isInboundary?(@x, @y - 1)
+			allowed = isInBoundary?(@x, @y - 1)
 
 			if allowed
 				@y = @y - 1
@@ -62,7 +62,7 @@ class Robocop
 			end
 			
 		when :west
-			allowed = isInboundary?(@x - 1, @y)
+			allowed = isInBoundary?(@x - 1, @y)
 
 			if allowed
 				@x = @x - 1
@@ -80,7 +80,7 @@ class Robocop
 		allowed = false
 		case @direction
 		when :north
-			allowed = isInboundary?(@x, @y - 1)
+			allowed = isInBoundary?(@x, @y - 1)
 
 			if allowed
 				@y = @y - 1
@@ -90,7 +90,7 @@ class Robocop
 			end
 
 		when :east
-			allowed = isInboundary?(@x - 1, @y)
+			allowed = isInBoundary?(@x - 1, @y)
 
 			if allowed
 				@x = @x - 1
@@ -100,7 +100,7 @@ class Robocop
 			end
 			
 		when :south
-			allowed = isInboundary?(@x, @y + 1)
+			allowed = isInBoundary?(@x, @y + 1)
 
 			if allowed
 				@y = @y + 1
@@ -111,7 +111,7 @@ class Robocop
 
 			
 		when :west
-			allowed = isInboundary?(@x + 1, @y)
+			allowed = isInBoundary?(@x + 1, @y)
 
 			if allowed
 				@x = @x + 1
@@ -179,7 +179,7 @@ class Robocop
 		path
 	end
 
-	def isInboundary?(x, y)
+	def isInBoundary?(x, y)
 		if((x <= @boundary['x'] && x >= 0) && (y <= @boundary['y'] && y >= 0))
 			return true
 		else
