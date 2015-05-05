@@ -1,17 +1,19 @@
+# require 'grid'
+
 class Robocop
 	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :direction
-	attr_accessor :boundry
+	attr_accessor :boundary
 
 	def initialize(x = 0, y = 0)
 		@x = x
 		@y = y
 		@direction = :north
 
-		@boundry = {}
-		@boundry['y'] = 5
-		@boundry['x'] = 5
+		@boundary = {}
+		@boundary['y'] = 8
+		@boundary['x'] = 8
 	end
 
 	def beep
@@ -27,15 +29,48 @@ class Robocop
 	end
 
 	def forward
+		allowed = false
 		case @direction
 		when :north
-			@y = @y + 1
+			allowed = isInboundary?(@x, @y + 1)
+
+			if allowed
+				@y = @y + 1
+				puts "I just moved one block forwards"
+			else
+				puts "Cannot move forward; out of boundary"
+			end
+			
 		when :east
-			@x = @x + 1
+			allowed = isInboundary?(@x + 1, @y)
+
+			if allowed
+				@x = @x + 1
+				puts "I just moved one block forwards"
+			else
+				puts "Cannot move forward; out of boundary"
+			end
+			
 		when :south
-			@y = @y - 1
+			allowed = isInboundary?(@x, @y - 1)
+
+			if allowed
+				@y = @y - 1
+				puts "I just moved one block forwards"
+			else
+				puts "Cannot move forward; out of boundary"
+			end
+			
 		when :west
-			@x = @x - 1
+			allowed = isInboundary?(@x - 1, @y)
+
+			if allowed
+				@x = @x - 1
+				puts "I just moved one block forwards"
+			else
+				puts "Cannot move forward; out of boundary"
+			end
+			
 		end
 
 		[@x,@y]
@@ -110,8 +145,8 @@ class Robocop
 		path
 	end
 
-	def inBoundry?
-		if((@x <= @boundry['x'] && @x >= 0) && (@y <= @boundry['y'] && @y >= 0))
+	def isInboundary?(x, y)
+		if((x <= @boundary['x'] && x >= 0) && (y <= @boundary['y'] && y >= 0))
 			return true
 		else
 			return false

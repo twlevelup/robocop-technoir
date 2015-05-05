@@ -6,7 +6,7 @@ system("clear")
 
 robo = Robocop.new(5, 0)
 
-grid = Grid.new(8, 8)
+grid = Grid.new
 
 puts "\n\n\n"
 puts "Hi, I'm a moving robot, here is what we can do..."
@@ -23,7 +23,7 @@ puts "\t\tgo to [x, y]: will move me from my current location to a new location*
 puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
-puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
+puts "I am currently at #{grid.getStreet(robo.x, robo.y)} facing #{robo.direction}"
 puts "Please enter the command you would like me to carry out: "
 
 
@@ -35,7 +35,6 @@ while true
     case userInput
     when 'f'
         robo.forward
-        puts "I just moved one block forwards"
         puts "I am currently at #{grid.getStreet(robo.x, robo.y)}"
         puts "I am currently facing #{robo.direction}"
     when 'b'

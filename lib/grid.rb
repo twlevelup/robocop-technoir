@@ -1,7 +1,6 @@
 class Grid
-	def initialize(x, y)
-		@x = x
-		@y = y
+
+	def initialize
 
 		@vStreetNames = {}
 

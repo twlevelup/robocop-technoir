@@ -20,7 +20,7 @@ RSpec.describe Robocop do
 			}
 
 			it 'should move forward' do
-				expect(robot.forward).to eq([100, 121])
+				expect(robot.forward).to eq([100, 120])
 			end
 		end
 
@@ -67,95 +67,72 @@ RSpec.describe Robocop do
 		end
 	end
 
-	describe '#boundry' do
+	describe '#boundary' do
 
 		# Moving north
-	    context 'Robot moves forwards within the boundry' do
+	    context 'Robot moves forwards within the boundary' do
 	        robot = Robocop.new
-			robot.forward
 	        it 'robot should be within boundary' do
-	            expect(robot.inBoundry?).to eq(true)
+	            expect(robot.isInBoundary?(0, 0)).to eq(true)
 	        end
 	    end
 
-		context 'Robot moves forwards on the boundry' do
+		context 'Robot moves forwards on the boundary' do
 			robot = Robocop.new
-			robot.y = 4
-			robot.forward
-			it 'Robot moves forwards on the boundry' do
-				expect(robot.inBoundry?).to eq(true)
+			it 'Robot moves forwards on the boundary' do
+				expect(robot.isInBoundary?(0, 4)).to eq(true)
 			end
 		end
 
-		context 'Robot moves forwards out of boundry' do
+		context 'Robot moves forwards out of boundary' do
 			robot = Robocop.new
-			robot.y = 5
-			robot.forward
-			it 'Robot moves forwards out of boundry' do
-				expect(robot.inBoundry?).to eq(false)
+			it 'Robot moves forwards out of boundary' do
+				expect(robot.isInBoundary?(0, 9)).to eq(false)
 			end
 		end
 
 		# Moving south
-		context 'Robot moves forwards within the boundry' do
+		context 'Robot moves forwards within the boundary' do
 	        robot = Robocop.new
-			robot.direction = :south
-			robot.y = 5
-			robot.forward
 	        it 'robot should be within boundary' do
-	            expect(robot.inBoundry?).to eq(true)
+	            expect(robot.isInBoundary?(0, 5)).to eq(true)
 	        end
 	    end
 
-	    context 'Robot moves forwards on the boundry' do
+	    context 'Robot moves forwards on the boundary' do
 	        robot = Robocop.new
-			robot.direction = :south
-			robot.y = 1
-			robot.forward
 	        it 'robot should be on boundary' do
-	            expect(robot.inBoundry?).to eq(true)
+	            expect(robot.isInBoundary?(0, 1)).to eq(true)
 	        end
 	    end
 
-		context 'Robot moves forwards on the boundry' do
+		context 'Robot moves forwards on the boundary' do
 	        robot = Robocop.new
-			robot.direction = :south
-			robot.y = 0
-			robot.forward
 	        it 'robot should be on boundary' do
-	            expect(robot.inBoundry?).to eq(false)
+	            expect(robot.isInBoundary?(0, 0)).to eq(true)
 	        end
 	    end
 
 		# Moving east
 		context 'Robot is moving east' do
 	        robot = Robocop.new
-			robot.direction = :east
-			robot.x = 0
-			robot.forward
 	        it 'robot should be within boundary' do
-	            expect(robot.inBoundry?).to eq(true)
+	            expect(robot.isInBoundary?(0, 0)).to eq(true)
 	        end
 
 	    end
 
 		context 'Robot is moving east' do
 			robot = Robocop.new
-			robot.direction = :east
-			robot.x = 4
-			robot.forward
 			it 'robot should be on boundary' do
-	            expect(robot.inBoundry?).to eq(true)
+	            expect(robot.isInBoundary?(4, 0)).to eq(true)
 	        end
 		end
 
 		context 'Robot is moving east' do
 			robot = Robocop.new
-			robot.direction = :east
-			robot.x = 5
-			robot.forward
 			it 'robot should be out of boundary' do
-				expect(robot.inBoundry?).to eq(false)
+				expect(robot.isInBoundary?(9, 0)).to eq(false)
 			end
 		end
 
@@ -240,4 +217,17 @@ RSpec.describe Robocop do
 			end
 		end
 	end
+
+	# describe '#leaving grid' do
+	# 	context 'Robot moves to prescribed coordinates' do
+	# 		robot = Robocop.new
+	# 		robot.direction = :north
+	# 		robot.y = 8
+	# 		robot.x = 8
+		
+	# 		it 'Should not leave boundary' do
+	# 			expect(robot.isInBoundary?).to eq(true)
+	# 		end
+	# 	end
+	# end
 end

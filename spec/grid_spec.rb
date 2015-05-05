@@ -3,7 +3,7 @@ require 'grid'
 RSpec.describe Grid do
 	describe '#street names' do
 		context 'Get street name' do
-			grid = Grid.new(8, 8)
+			grid = Grid.new
 			street = grid.getStreet(2, 3)
 
 			it 'should return William St and Lt Collins' do
@@ -12,7 +12,7 @@ RSpec.describe Grid do
 		end
 
 		context 'Get second street name' do
-			grid = Grid.new(8, 8)
+			grid = Grid.new
 			street = grid.getStreet(5, 4)
 
 			it 'should return Collins and Swanston St' do
