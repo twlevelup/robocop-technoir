@@ -47,13 +47,28 @@ while true
             puts "Robot does not exist, please try again!"
         end
         
-    when 'b'
-        robo.backward
-        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}, facing #{robo.direction}"
-    when 'r'
-        robo.rotateRight
-        puts "I just rotated to my right"
-        puts "I am currently at #{grid.getStreet(robo.x, robo.y)}, facing #{robo.direction}"
+    when /[1-9]+\s*b/
+        selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
+
+        if selectedId < robots.length
+            selectedRobot = robots[selectedId]
+            selectedRobot.backward
+            puts "I am currently at #{grid.getStreet(selectedRobot.x, selectedRobot.y)}, facing #{selectedRobot.direction}"
+        else
+            puts "Robot does not exist, please try again!"
+        end
+        
+    when /[1-9]+\s*r/
+        selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
+
+        if selectedId < robots.length
+            selectedRobot = robots[selectedId]
+            selectedRobot.rotateRight
+            puts "I just rotated to my right"
+            puts "I am currently at #{grid.getStreet(selectedRobot.x, selectedRobot.y)}, facing #{selectedRobot.direction}"
+        else
+            puts "Robot does not exist, please try again!"
+        end
     when 'l'
         robo.rotateLeft
         puts "I just rotated to my left"
