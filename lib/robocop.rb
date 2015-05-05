@@ -77,15 +77,49 @@ class Robocop
 	end
 
 	def backward
+		allowed = false
 		case @direction
 		when :north
-			@y = @y - 1
+			allowed = isInboundary?(@x, @y - 1)
+
+			if allowed
+				@y = @y - 1
+				puts "I just moved one block backwards"
+			else
+				puts "Cannot move backward; out of boundary"
+			end
+
 		when :east
-			@x = @x - 1
+			allowed = isInboundary?(@x - 1, @y)
+
+			if allowed
+				@x = @x - 1
+				puts "I just moved one block backwards"
+			else
+				puts "Cannot move backward; out of boundary"
+			end
+			
 		when :south
-			@y = @y + 1
+			allowed = isInboundary?(@x, @y + 1)
+
+			if allowed
+				@y = @y + 1
+				puts "I just moved one block backwards"
+			else
+				puts "Cannot move backward; out of boundary"
+			end
+
+			
 		when :west
-			@x = @x + 1
+			allowed = isInboundary?(@x + 1, @y)
+
+			if allowed
+				@x = @x + 1
+				puts "I just moved one block backwards"
+			else
+				puts "Cannot move backward; out of boundary"
+			end
+			
 		end
 
 		[@x,@y]
