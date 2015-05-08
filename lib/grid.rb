@@ -5,25 +5,25 @@ class Grid
 		@vStreetNames = {}
 
 		@vStreetNames["0"] = "Spencer St"
-		@vStreetNames["1"] = "King St"
-		@vStreetNames["2"] = "William St"
-		@vStreetNames["3"] = "Queen St"
-		@vStreetNames["4"] = "Elizabeth St"
-		@vStreetNames["5"] = "Swanston St"
-		@vStreetNames["6"] = "Russell St"
-		@vStreetNames["7"] = "Exhibition St"
-		@vStreetNames["8"] = "Spring St"
+		@vStreetNames["2"] = "King St"
+		@vStreetNames["4"] = "William St"
+		@vStreetNames["6"] = "Queen St"
+		@vStreetNames["8"] = "Elizabeth St"
+		@vStreetNames["10"] = "Swanston St"
+		@vStreetNames["12"] = "Russell St"
+		@vStreetNames["14"] = "Exhibition St"
+		@vStreetNames["16"] = "Spring St"
 
 		@hStreetNames = {}
 		@hStreetNames["0"] = "Flinders St"
-		@hStreetNames["1"] = "Flinders Ln"
-		@hStreetNames["2"] = "Collins St"
-		@hStreetNames["3"] = "Lt Collins St"
-		@hStreetNames["4"] = "Bourke St"
-		@hStreetNames["5"] = "Lt Bourke St"
-		@hStreetNames["6"] = "Lonsdale St"
-		@hStreetNames["7"] = "Lt Lonsdale St"
-		@hStreetNames["8"] = "Latrobe St"
+		@hStreetNames["2"] = "Flinders Ln"
+		@hStreetNames["4"] = "Collins St"
+		@hStreetNames["6"] = "Lt Collins St"
+		@hStreetNames["8"] = "Bourke St"
+		@hStreetNames["10"] = "Lt Bourke St"
+		@hStreetNames["12"] = "Lonsdale St"
+		@hStreetNames["14"] = "Lt Lonsdale St"
+		@hStreetNames["16"] = "Latrobe St"
 
 	end
 

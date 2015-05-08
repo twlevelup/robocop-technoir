@@ -1,19 +1,17 @@
-# require 'grid'
-
 class Robocop
 	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :direction
 	attr_accessor :boundary
 
-	def initialize(x = 0, y = 0)
+	def initialize(x = 0, y = 0, gridDisplay)
 		@x = x
 		@y = y
 		@direction = :north
 
 		@boundary = {}
-		@boundary['y'] = 8
-		@boundary['x'] = 8
+		@boundary['y'] = gridDisplay.y
+		@boundary['x'] = gridDisplay.x
 	end
 
 	def beep
@@ -28,44 +26,62 @@ class Robocop
 		return @direction
 	end
 
-	def forward
+	def forward(robotId,grid)
 		allowed = false
 		case @direction
 		when :north
-			allowed = isInBoundary?(@x, @y + 1)
+			allowed = isInBoundary?(@x, @y + 2)
 
 			if allowed
-				@y = @y + 1
+				grid[@x][@y] = '---'
+				@y = @y + 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
+
 				puts "I just moved one block forwards"
 			else
 				puts "Cannot move forward; out of boundary"
 			end
 			
 		when :east
-			allowed = isInBoundary?(@x + 1, @y)
+			allowed = isInBoundary?(@x + 2, @y)
 
 			if allowed
-				@x = @x + 1
+				grid[@x][@y] = '---'
+				@x = @x + 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block forwards"
 			else
 				puts "Cannot move forward; out of boundary"
 			end
 			
 		when :south
-			allowed = isInBoundary?(@x, @y - 1)
+			allowed = isInBoundary?(@x, @y - 2)
 
 			if allowed
-				@y = @y - 1
+				grid[@x][@y] = '---'
+				@y = @y - 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block forwards"
 			else
 				puts "Cannot move forward; out of boundary"
 			end
 			
 		when :west
-			allowed = isInBoundary?(@x - 1, @y)
+			allowed = isInBoundary?(@x - 2, @y)
 
 			if allowed
-				@x = @x - 1
+				grid[@x][@y] = '---'
+				@x = @x - 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
+
 				puts "I just moved one block forwards"
 			else
 				puts "Cannot move forward; out of boundary"
@@ -76,34 +92,46 @@ class Robocop
 		[@x,@y]
 	end
 
-	def backward
+	def backward(robotId,grid)
 		allowed = false
 		case @direction
 		when :north
-			allowed = isInBoundary?(@x, @y - 1)
+			allowed = isInBoundary?(@x, @y - 2)
 
 			if allowed
-				@y = @y - 1
+				grid[@x][@y] = '---'
+				@y = @y - 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block backwards"
 			else
 				puts "Cannot move backward; out of boundary"
 			end
 
 		when :east
-			allowed = isInBoundary?(@x - 1, @y)
+			allowed = isInBoundary?(@x - 2, @y)
 
 			if allowed
-				@x = @x - 1
+				grid[@x][@y] = '---'
+				@x = @x - 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block backwards"
 			else
 				puts "Cannot move backward; out of boundary"
 			end
 			
 		when :south
-			allowed = isInBoundary?(@x, @y + 1)
+			allowed = isInBoundary?(@x, @y + 2)
 
 			if allowed
-				@y = @y + 1
+				grid[@x][@y] = '---'
+				@y = @y + 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block backwards"
 			else
 				puts "Cannot move backward; out of boundary"
@@ -111,10 +139,14 @@ class Robocop
 
 			
 		when :west
-			allowed = isInBoundary?(@x + 1, @y)
+			allowed = isInBoundary?(@x + 2, @y)
 
 			if allowed
-				@x = @x + 1
+				grid[@x][@y] = '---'
+				@x = @x + 2
+
+				grid[@x][@y] = "-" + (robotId+1).to_s + "-"
+
 				puts "I just moved one block backwards"
 			else
 				puts "Cannot move backward; out of boundary"

@@ -1,14 +1,25 @@
 require './lib/robocop.rb'
 require './lib/grid.rb'
+require './lib/griddisplay.rb'
 
 # This will clear the screen, so that it's easier to use
 system("clear")
 
 robots = []
 
-(2..6).to_a.sample.times {
-    robots.push(Robocop.new((0..8).to_a.sample, (0..8).to_a.sample))
-    
+gridDisplay = GridDisplay.new(7,15)
+
+#(2..6).to_a.sample.times {
+    #robots.push(Robocop.new((0..8).to_a.sample, (0..8).to_a.sample))
+    robots.push(Robocop.new(2,2, gridDisplay))
+    robots.push(Robocop.new(0,2, gridDisplay))
+    robots.push(Robocop.new(4,4, gridDisplay))
+#}
+
+
+
+robots.each_with_index { |robot, robotIndex|
+    gridDisplay.grid[robot.x][robot.y] = '-' + (robotIndex+1).to_s + '-'
 }
 
 grid = Grid.new
@@ -32,6 +43,8 @@ puts "\n\n"
 puts "* 1 block within the CBD grid"
 puts "\n\n"
 # puts "I am currently at #{grid.getStreet(robo.x, robo.y)}, facing #{robo.direction}"
+gridDisplay.drawGrid
+puts "\n\n"
 puts "Please enter the command you would like me to carry out: "
 
 
@@ -46,8 +59,11 @@ while true
 
         if selectedId < robots.length
             selectedRobot = robots[selectedId]
-            selectedRobot.forward
+            selectedRobot.forward(selectedId,gridDisplay.grid)
+            
             puts "I am currently at #{grid.getStreet(selectedRobot.x, selectedRobot.y)}, facing #{selectedRobot.direction}"
+            puts "\n"
+
         else
             puts "Robot does not exist, please try again!"
         end
@@ -57,7 +73,7 @@ while true
 
         if selectedId < robots.length
             selectedRobot = robots[selectedId]
-            selectedRobot.backward
+            selectedRobot.backward(selectedId,gridDisplay.grid)
             puts "I am currently at #{grid.getStreet(selectedRobot.x, selectedRobot.y)}, facing #{selectedRobot.direction}"
         else
             puts "Robot does not exist, please try again!"
@@ -112,6 +128,12 @@ while true
     else
         puts "I do not understand that command"
     end
+
+    robots.each_with_index { |robot, robotIndex|
+        gridDisplay.grid[robot.x][robot.y] = '-' + (robotIndex+1).to_s + '-'
+    }
+
+    gridDisplay.drawGrid
 
     # puts "Current lcoation is: [#{robo.x}, #{robo.y}]"
     puts "\n\nWhats my next command?: "
