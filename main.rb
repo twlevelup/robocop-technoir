@@ -3,11 +3,11 @@ require './lib/grid.rb'
 require './lib/griddisplay.rb'
 
 # This will clear the screen, so that it's easier to use
-system("clear")
+system "cls"
 
 robots = []
 
-gridDisplay = GridDisplay.new(7,15)
+gridDisplay = GridDisplay.new(15,15)
 
 #(2..6).to_a.sample.times {
     #robots.push(Robocop.new((0..8).to_a.sample, (0..8).to_a.sample))
@@ -45,16 +45,20 @@ puts "\n\n"
 # puts "I am currently at #{grid.getStreet(robo.x, robo.y)}, facing #{robo.direction}"
 gridDisplay.drawGrid
 puts "\n\n"
-puts "Please enter the command you would like me to carry out: "
+
 
 
 
 while true
 
+
+    puts "Please enter the command you would like me to carry out: "
+
     userInput = gets.strip
 
     case userInput
     when /[1-9]+\s*f/
+        system "cls"
         selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
 
         if selectedId < robots.length
@@ -69,6 +73,7 @@ while true
         end
         
     when /[1-9]+\s*b/
+        system "cls"
         selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
 
         if selectedId < robots.length
@@ -80,6 +85,7 @@ while true
         end
         
     when /[1-9]+\s*r/
+        system "cls"
         selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
 
         if selectedId < robots.length
@@ -91,6 +97,7 @@ while true
             puts "Robot does not exist, please try again!"
         end
     when /[1-9]+\s*l/
+        system "cls"
         selectedId = userInput.scan( /[1-9]+/).first.to_i - 1
 
         if selectedId < robots.length
@@ -102,6 +109,7 @@ while true
             puts "Robot does not exist, please try again!"
         end
     when 'list'
+        system "cls"
         puts "\n"
         printf "%-10s %-40s %s\n", "id", "location", "direction"
         puts "-"*61
@@ -112,6 +120,7 @@ while true
         }
 
     when /go to \[[1-9]+\s*,\s*[1-9]+\]/
+        system "cls"
         robo.rotateLeft
         x = userInput.scan( /[1-9]+/).first
         y = userInput.scan( /[1-9]+/).last
@@ -126,15 +135,15 @@ while true
             sleep(0.5)
         }
     else
+        system "cls"
         puts "I do not understand that command"
     end
 
     robots.each_with_index { |robot, robotIndex|
         gridDisplay.grid[robot.x][robot.y] = '-' + (robotIndex+1).to_s + '-'
     }
-
+    
     gridDisplay.drawGrid
-
     # puts "Current lcoation is: [#{robo.x}, #{robo.y}]"
-    puts "\n\nWhats my next command?: "
+    #puts "\n\nWhats my next command?: "
 end
